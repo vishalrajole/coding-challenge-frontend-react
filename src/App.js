@@ -9,7 +9,7 @@ import IncidentList from './views/routes/incident-list/incidentList.index';
 import Header from './views/components/header/header';
 import { Container } from './views/styles/layout';
 
-const store = configureStore();
+export const store = configureStore();
 
 class App extends Component {
   render() {

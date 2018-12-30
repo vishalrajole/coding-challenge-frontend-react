@@ -1,6 +1,8 @@
 import { FETCH_INCIDENTS } from './incidentList.actionTypes';
 
-export default function (state = null, action) {
+const initialState = [];
+
+export default function (state = initialState, action) {
     console.log("into reducers", action);
     switch (action.type) {
         case FETCH_INCIDENTS:
