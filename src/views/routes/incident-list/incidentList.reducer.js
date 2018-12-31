@@ -1,12 +1,18 @@
 import { FETCH_INCIDENTS } from './incidentList.actionTypes';
-
-const initialState = [];
+import { keyBy, map } from 'lodash';
+const initialState = {
+    list: {},
+    order: []
+};
 
 export default function (state = initialState, action) {
-    console.log("into reducers", action);
     switch (action.type) {
         case FETCH_INCIDENTS:
-            return action.payload;
+            const order = map(action.payload, 'id');
+            const list = keyBy(action.payload, 'id');
+            const newList = { ...state.list, ...list };
+            const newOrder = [...state.order, ...order]
+            return { list: newList, order: newOrder };
         default:
             return state;
     }

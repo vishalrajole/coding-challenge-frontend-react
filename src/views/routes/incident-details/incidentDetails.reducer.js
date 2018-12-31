@@ -1,4 +1,4 @@
-import { FETCH_LOCATIONS, UPDATE_DESCRIPTION } from './incidentDetails.actionTypes';
+import { FETCH_LOCATIONS, UPDATE_DESCRIPTION, RESET_INCIDENT_DETAILS } from './incidentDetails.actionTypes';
 import { filter } from 'lodash';
 const initialState = {};
 
@@ -18,6 +18,8 @@ export default function (state = initialState, action) {
 
         case UPDATE_DESCRIPTION:
             return { ...state, ...action.payload };
+        case RESET_INCIDENT_DETAILS:
+            return initialState;
         default:
             return state;
     }

@@ -5,7 +5,7 @@ import { isEmpty } from 'lodash';
 
 import GoogleMaps from '../../components/google-map/googlemap.index';
 
-import { updateDescription, fetchLocations } from '../incident-details/incidentDetails.action';
+import { updateDescription, fetchLocations, resetIncidentDetails } from '../incident-details/incidentDetails.action';
 import { MapWrapper } from './incidentDetails.style';
 import Loader from '../../components/loader/loader.index';
 class IncidentDetails extends Component {
@@ -21,6 +21,9 @@ class IncidentDetails extends Component {
         }, (error) => {
             console.log('inside fetchLocation error: ', error);
         });
+    }
+    componentWillUnmount() {
+        this.props.resetIncidentDetails();
     }
     render() {
         console.log('thidhfs:', this.props)
@@ -38,7 +41,7 @@ class IncidentDetails extends Component {
                                 zoom: 16
                             }}
                             onMapLoad={map => {
-                                var marker = new window.google.maps.Marker({
+                                new window.google.maps.Marker({
                                     position: { lat: this.props.incidentDetails.geometry.coordinates[0], lng: this.props.incidentDetails.geometry.coordinates[1] },
                                     map: map
                                 });
@@ -60,4 +63,4 @@ function mapStateToPros({ incidentDetails, loader }) {
     return { incidentDetails, isLoading: loader.isLoading }
 }
 
-export default connect(mapStateToPros, { updateDescription, fetchLocations })(IncidentDetails);
+export default connect(mapStateToPros, { updateDescription, fetchLocations, resetIncidentDetails })(IncidentDetails);

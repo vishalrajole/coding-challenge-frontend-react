@@ -18,7 +18,7 @@ class Incident extends Component {
             this.props.incident.title &&
             <StyledIncident onClick={this.gotoIncidentDetails.bind(this)}>
                 <IncidentImage>
-                    <img src={this.props.incident.media.image_url} alt="No Image" />
+                    <img src={this.props.incident.media.image_url} alt={this.props.incident.media.image_url} />
                 </IncidentImage>
                 <div>
                     <IncidentTitle>{this.props.incident.title}</IncidentTitle>

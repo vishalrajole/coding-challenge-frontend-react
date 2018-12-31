@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-const googleMap = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAgB5uPxCFEGH2Jv9BFkgvSE0UeXtiyPiQ`;
 class GoogleMaps extends Component {
     constructor(props) {
         super(props);
