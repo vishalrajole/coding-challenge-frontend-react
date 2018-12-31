@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
+import { updateDescription } from '../../routes/incident-details/incidentDetails.action';
 import { StyledIncident, IncidentImage, IncidentTitle, SmallInfo } from './incident.style';
 class Incident extends Component {
 
     gotoIncidentDetails = () => {
         console.log(`inside gotoIncidentDetails`, this.props.history, this.props.incident.id);
+        this.props.updateDescription(this.props.incident);
         this.props.history.push(`incident/${this.props.incident.id}`);
     }
 
@@ -26,4 +30,4 @@ class Incident extends Component {
     }
 }
 
-export default withRouter(Incident);
+export default withRouter(connect(null, { updateDescription })(Incident));

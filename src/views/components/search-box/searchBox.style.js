@@ -4,6 +4,7 @@ import { GPIconSearch } from '../../styles/iconFonts';
 export const Wrapper = styled.div`
   display: flex;
   height: 36px;
+  width: 50%;
   overflow: hidden;
   border-radius: 3px;
   background: #fff;
@@ -21,6 +22,8 @@ export const IconWrapper = styled.div`
 `;
 
 export const SearchField = styled.input`
+  display: flex;
+  flex-grow: 1;
   font-size: 1rem;
   padding: 10px;
   border: 0;

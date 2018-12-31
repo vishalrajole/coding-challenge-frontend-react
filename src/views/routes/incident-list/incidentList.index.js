@@ -10,6 +10,7 @@ import Loader from '../../components/loader/loader.index';
 import EmptyMessage from '../../components/empty-message/emptyMessage.index';
 
 class IncidentList extends Component {
+
     componentDidMount() {
         this.props.fetchIncidents();
     }
@@ -30,7 +31,7 @@ class IncidentList extends Component {
 
     searchIncidents = e => {
         const query = e.target.value ? { query: e.target.value } : {};
-        this.props.fetchIncidents(query);
+        this.props.fetchIncidents(query)
     };
 
     render() {

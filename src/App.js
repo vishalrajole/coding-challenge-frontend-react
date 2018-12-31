@@ -8,6 +8,7 @@ import IncidentDetails from './views/routes/incident-details/incidentDetails.ind
 import IncidentList from './views/routes/incident-list/incidentList.index';
 import Header from './views/components/header/header';
 import { Container } from './views/styles/layout';
+import ErrorBoundary from './views/components/error-boundary/errorBoundary.index';
 
 export const store = configureStore();
 
@@ -17,12 +18,14 @@ class App extends Component {
       <Provider store={store}>
         <Header></Header>
         <BrowserRouter>
-          <Container>
-            <Switch>
-              <Route path="/incident/:incidentId" component={IncidentDetails} />
-              <Route path="/" component={IncidentList} />
-            </Switch>
-          </Container>
+          <ErrorBoundary>
+            <Container>
+              <Switch>
+                <Route path="/incident/:incidentId" component={IncidentDetails} />
+                <Route path="/" component={IncidentList} />
+              </Switch>
+            </Container>
+          </ErrorBoundary>
         </BrowserRouter>
       </Provider>
     );
