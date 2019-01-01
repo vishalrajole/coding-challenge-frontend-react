@@ -5,5 +5,5 @@ import qs from 'querystring';
 
 export const fetchIncidents = (params) => async dispatch => {
     const res = await ApiInstance.get(`https://bikewise.org/api/v2/incidents${isEmpty(params) ? '' : `?${qs.stringify(params)}`}`);
-    dispatch({ type: FETCH_INCIDENTS, payload: res.data.incidents });
+    dispatch({ type: FETCH_INCIDENTS, payload: { list: res.data.incidents, page: params.page } });
 };

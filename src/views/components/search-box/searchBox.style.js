@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { GPIconSearch } from '../../styles/iconFonts';
 
-export const Wrapper = styled.div`
-  display: flex;
+export const SearchBoxWrapper = styled.div`
+  display: inline-flex;
   height: 36px;
-  width: 50%;
   overflow: hidden;
   border-radius: 3px;
   background: #fff;

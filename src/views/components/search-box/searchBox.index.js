@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Wrapper, IconWrapper, SearchField } from './searchBox.style';
+import { SearchBoxWrapper, IconWrapper, SearchField } from './searchBox.style';
 import { GPIconSearch } from '../../styles/iconFonts';
 
 class SearchBox extends Component {
     render() {
         return (
-            <Wrapper>
+            <SearchBoxWrapper>
                 <IconWrapper>
                     <GPIconSearch />
                 </IconWrapper>
@@ -17,7 +17,7 @@ class SearchBox extends Component {
                     value={this.props.value}
                     onChange={this.props.onChange}
                 />
-            </Wrapper>
+            </SearchBoxWrapper>
         );
     }
 }

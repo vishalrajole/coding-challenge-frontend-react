@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment'
 import { connect } from 'react-redux';
-import { debounce } from 'lodash';
 
 import { fetchIncidents } from './incidentList.action';
 import Incident from '../../components/incident/incident';
-import { StyledIncidentList } from './incidentList.style';
+import { StyledIncidentList, Filter } from './incidentList.style';
 import SearchBox from '../../components/search-box/searchBox.index';
 import Loader from '../../components/loader/loader.index';
 import EmptyMessage from '../../components/empty-message/emptyMessage.index';
@@ -13,10 +15,14 @@ import { Button } from '../../components/button/button.index';
 class IncidentList extends Component {
     state = {
         page: 1,
-        per_page: 10
+        per_page: 10,
+        startDate: null,
+        endDate: null,
+        searchQuery: '',
+
     }
     componentDidMount() {
-        this.props.fetchIncidents({ page: this.state.page, per_page: this.state.per_page });
+        this.fetchIncidents();
     }
 
     renderIncidentList = () => {
@@ -26,35 +32,66 @@ class IncidentList extends Component {
         })
     }
 
-    debounceEvent(...args) {
-        this.debouncedEvent = debounce(...args);
-        return e => {
-            e.persist();
-            return this.debouncedEvent(e);
-        }
-    }
+    handleInputChange = e => {
+        this.setState({ searchQuery: e.target.value, page: 1 });
+    };
 
-    searchIncidents = e => {
-        const query = e.target.value ? { query: e.target.value } : {};
-        this.props.fetchIncidents(query)
+    fetchIncidents = () => {
+        const query = this.state.searchQuery || null;
+        const occurred_after = moment(this.state.startDate).unix() || null;
+        const occurred_before = moment(this.state.endDate).unix() || null;
+        const filter = Object.assign(
+            {},
+            query ? { query } : null,
+            occurred_after ? { occurred_after } : null,
+            occurred_before ? { occurred_before } : null,
+            { page: this.state.page, per_page: this.state.per_page }
+        )
+        this.props.fetchIncidents(filter);
     };
 
     paginate = () => {
         this.setState({ page: this.state.page + 1 }, () => {
-            console.log('inside paginate: ', this.state.page)
-            this.props.fetchIncidents({ page: this.state.page, per_page: this.state.per_page });
+            this.fetchIncidents();
         })
     }
 
+    handleStartDateChange = (startDate) => {
+        this.setState({ startDate, page: 1 });
+    }
+    handleEndDateChange = (endDate) => {
+        this.setState({ endDate, page: 1 })
+    }
     render() {
         return (
             <>
-                <SearchBox placeholder="Search Incident" onChange={this.debounceEvent(this.searchIncidents, 2000)}> </SearchBox>
+                <Filter>
+                    <SearchBox placeholder="Search Incident" onChange={this.handleInputChange}> </SearchBox>
+                    <DatePicker
+                        dateFormat="MMMM d, yyyy"
+                        className="custom-date-picker"
+                        placeholderText="Start Date"
+                        selected={this.state.startDate}
+                        selectsStart
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        onChange={this.handleStartDateChange} />
+                    <DatePicker
+                        dateFormat="MMMM d, yyyy"
+                        className="custom-date-picker"
+                        placeholderText="End Date"
+                        selected={this.state.endDate}
+                        selectsEnd
+                        startDate={this.state.startDate}
+                        endDate={this.state.endDate}
+                        onChange={this.handleEndDateChange} />
+                    <Button disabled={this.props.isLoading} onClick={this.fetchIncidents}> {this.props.isLoading ? <Loader></Loader> : 'Find Cases'}</Button>
+                </Filter>
                 <StyledIncidentList>
                     {this.props.incidentList && this.renderIncidentList()}
                 </StyledIncidentList>
-                {!this.props.isLoading && this.props.incidentList.length === 0 && <EmptyMessage></EmptyMessage>}
-                <Button block disabled={this.props.isLoading} onClick={this.paginate}>{this.props.isLoading ? <Loader></Loader> : 'Show More'}</Button>
+                {!this.props.isLoading && !this.props.incidentOrder.length && <EmptyMessage></EmptyMessage>}
+                {(this.props.incidentOrder.length > 0 && this.props.incidentOrder.length % this.state.per_page === 0) && <Button block disabled={this.props.isLoading} onClick={this.paginate}>{this.props.isLoading ? <Loader></Loader> : 'Show More'}</Button>}
             </>
         )
     }
