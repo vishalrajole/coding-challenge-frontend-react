@@ -3,7 +3,6 @@ import { filter } from 'lodash';
 const initialState = {};
 
 export default function (state = initialState, action) {
-    console.log("into reducers", action);
     switch (action.type) {
         case FETCH_LOCATIONS:
 

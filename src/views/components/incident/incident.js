@@ -8,7 +8,6 @@ import { StyledIncident, IncidentImage, IncidentTitle, SmallInfo } from './incid
 class Incident extends Component {
 
     gotoIncidentDetails = () => {
-        console.log(`inside gotoIncidentDetails`, this.props.history, this.props.incident.id);
         this.props.updateDescription(this.props.incident);
         this.props.history.push(`incident/${this.props.incident.id}`);
     }

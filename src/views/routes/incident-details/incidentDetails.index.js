@@ -9,6 +9,7 @@ import { updateDescription, fetchLocations, resetIncidentDetails } from '../inci
 import { MapWrapper } from './incidentDetails.style';
 import Loader from '../../components/loader/loader.index';
 class IncidentDetails extends Component {
+
     componentDidMount() {
         if (isEmpty(this.props.incidentDetails)) {
             return this.props.history.push('/');
@@ -21,9 +22,11 @@ class IncidentDetails extends Component {
             console.log('inside fetchLocation error: ', error);
         });
     }
+
     componentWillUnmount() {
         this.props.resetIncidentDetails();
     }
+
     render() {
         return (
             <>
@@ -46,6 +49,7 @@ class IncidentDetails extends Component {
                             }}
                         >
                         </GoogleMaps>}
+                    {!this.props.incidentDetails.geometry && !this.props.isLoading && <div>Location not found</div>}
                     {this.props.isLoading && <Loader />}
                 </MapWrapper>
                 <h4>Description Of Incident:</h4>

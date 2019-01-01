@@ -8,9 +8,9 @@ export const fetchLocations = (params) => async dispatch => {
     const res = await ApiInstance.get(`https://bikewise.org/api/v2/locations${isEmpty(params) ? '' : `?${qs.stringify(params)}`}`);
     dispatch({ type: FETCH_LOCATIONS, payload: res.data.features });
 };
+
 export const updateDescription = (data) => async dispatch => {
     dispatch({ type: UPDATE_DESCRIPTION, payload: data });
-
 }
 
 export const resetIncidentDetails = () => async dispatch => {
