@@ -17,7 +17,6 @@ class IncidentDetails extends Component {
             query: this.props.incidentDetails.description,
             incident_type: this.props.incidentDetails.type.toLowerCase()
         }).then(response => {
-            console.log('inside fetchLocation response: ', response)
         }, (error) => {
             console.log('inside fetchLocation error: ', error);
         });
@@ -26,7 +25,6 @@ class IncidentDetails extends Component {
         this.props.resetIncidentDetails();
     }
     render() {
-        console.log('thidhfs:', this.props)
         return (
             <>
                 <h4>{this.props.incidentDetails.title}</h4>

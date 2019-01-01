@@ -6,7 +6,6 @@ export const StyledIncidentList = styled.ul`
     display: flex;
     flex-direction:column;
     padding: 15px 0;
-    margin-bottom: 20px;
     > li + li {
         border-top: 1px solid #ddd;
     }
@@ -14,6 +13,7 @@ export const StyledIncidentList = styled.ul`
 
 export const Filter = styled.section`
     display: flex;
+    margin-bottom: 20px;
     ${SearchBoxWrapper} {
         margin-right: 0.5rem;
     }
