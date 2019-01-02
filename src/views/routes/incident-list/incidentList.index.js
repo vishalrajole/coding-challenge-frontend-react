@@ -5,7 +5,7 @@ import moment from 'moment'
 import { connect } from 'react-redux';
 
 import { fetchIncidents } from './incidentList.action';
-import Incident from '../../components/incident/incident';
+import Incident from '../../components/incident/incident.index';
 import { StyledIncidentList, Filter } from './incidentList.style';
 import SearchBox from '../../components/search-box/searchBox.index';
 import Loader from '../../components/loader/loader.index';

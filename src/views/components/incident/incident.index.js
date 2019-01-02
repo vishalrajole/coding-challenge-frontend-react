@@ -5,8 +5,8 @@ import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import { updateDescription } from '../../routes/incident-details/incidentDetails.action';
 import { StyledIncident, IncidentImage, IncidentTitle, SmallInfo } from './incident.style';
-class Incident extends Component {
 
+class Incident extends Component {
     gotoIncidentDetails = () => {
         this.props.updateDescription(this.props.incident);
         this.props.history.push(`incident/${this.props.incident.id}`);
