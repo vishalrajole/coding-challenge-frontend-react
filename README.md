@@ -1,5 +1,16 @@
 # Stolen Bike Index - JOIN Coding Challenge - Frontend (React)
 
+## Local Setup
+Clone this repo with git clone https://github.com/vishalrajole/coding-challenge-frontend-react.git
+run `yarn install`
+make sure .env file is created at project root level with 
+    REACT_APP_GOOGLE_MAP_API_KEY= API_KEY_VALUE  
+    REACT_APP_API_SERVER=https://bikewise.org/api/v2/ 
+run `yarn start`
+
+## Live Demo on Heroku
+https://coding-challenge-react.herokuapp.com/
+
 ## The context
 
 Stolen bikes are a typical problem in Berlin. The Police want to be more efficient in resolving stolen bike cases. They decided to build a software that can automate their processes — the software that you're going to develop.

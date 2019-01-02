@@ -53,7 +53,7 @@ class IncidentDetails extends Component {
                     {!this.props.incidentDetails.geometry && !this.props.isLoading && <div>Location not found</div>}
                     {this.props.isLoading && <Loader />}
                 </MapWrapper>
-                <h4>Description Of Incident:</h4>
+                {this.props.incidentDetails.description && <h4>Description Of Incident:</h4>}
                 <p>{this.props.incidentDetails.description}</p>
             </>
         )
