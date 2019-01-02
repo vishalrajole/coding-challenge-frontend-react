@@ -1,7 +1,7 @@
 # Stolen Bike Index - JOIN Coding Challenge - Frontend (React)
 
 ## Local Setup
-- Clone this repo with git clone https://github.com/vishalrajole/coding-challenge-frontend-react.git
+- Clone this repo with `git clone https://github.com/vishalrajole/coding-challenge-frontend-react.git`
 - run `yarn install`
 - make sure .env file is created at project root level with 
     - REACT_APP_GOOGLE_MAP_API_KEY= API_KEY_VALUE  
