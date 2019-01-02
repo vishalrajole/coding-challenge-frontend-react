@@ -96,7 +96,7 @@ class IncidentList extends Component {
                         startDate={this.state.startDate}
                         endDate={this.state.endDate}
                         onChange={this.handleEndDateChange} />
-                    <Button disabled={this.props.isLoading} onClick={this.fetchIncidents}>Find Cases</Button>
+                    <Button disabled={this.props.isLoading} onClick={this.fetchIncidents}>Filter</Button>
                     <Button disabled={this.props.isLoading} onClick={this.clearFilter}> Clear </Button>
                 </Filter>
                 {this.props.isLoading && <Loader />}
