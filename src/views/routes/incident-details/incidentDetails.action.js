@@ -4,8 +4,7 @@ import { isEmpty } from 'lodash';
 import qs from 'querystring';
 
 export const fetchLocations = (params) => async dispatch => {
-    console.log('inside fetchLocations: ', params)
-    const res = await ApiInstance.get(`https://bikewise.org/api/v2/locations${isEmpty(params) ? '' : `?${qs.stringify(params)}`}`);
+    const res = await ApiInstance.get(`${process.env.REACT_APP_API_SERVER}locations${isEmpty(params) ? '' : `?${qs.stringify(params)}`}`);
     dispatch({ type: FETCH_LOCATIONS, payload: res.data.features });
 };
 

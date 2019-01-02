@@ -30,7 +30,7 @@ class IncidentList extends Component {
         return this.props.incidentOrder.map(id => {
             const incident = this.props.incidentList[id];
             return <Incident key={incident.id} incident={incident}></Incident>
-        })
+        });
     }
 
     handleInputChange = e => {
@@ -47,21 +47,21 @@ class IncidentList extends Component {
             occurred_after ? { occurred_after } : null,
             occurred_before ? { occurred_before } : null,
             { page: this.state.page, per_page: this.state.per_page }
-        )
+        );
         this.props.fetchIncidents(filter);
     };
 
     paginate = () => {
         this.setState({ page: this.state.page + 1 }, () => {
             this.fetchIncidents();
-        })
+        });
     }
 
     handleStartDateChange = (startDate) => {
         this.setState({ startDate, page: 1 });
     }
     handleEndDateChange = (endDate) => {
-        this.setState({ endDate, page: 1 })
+        this.setState({ endDate, page: 1 });
     }
     clearFilter = () => {
         this.setState(this.initialState, () => {
@@ -107,7 +107,7 @@ class IncidentList extends Component {
 }
 
 function mapStateToPros({ incidentList, loader }) {
-    return { incidentList: incidentList.list, incidentOrder: incidentList.order, isLoading: loader.isLoading }
+    return { incidentList: incidentList.list, incidentOrder: incidentList.order, isLoading: loader.isLoading };
 }
 
 export default connect(mapStateToPros, { fetchIncidents })(IncidentList);
