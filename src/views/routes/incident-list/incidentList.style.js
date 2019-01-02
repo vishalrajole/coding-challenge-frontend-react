@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import { SearchBoxWrapper } from '../../components/search-box/searchBox.style';
 import { Button } from '../../components/button/button.index';
+import { BORDER_COLOR } from '../../styles/variables';
 
 export const StyledIncidentList = styled.ul`
     display: flex;
     flex-direction:column;
     padding: 15px 0;
     > li + li {
-        border-top: 1px solid #ddd;
+        border-top: 1px solid ${BORDER_COLOR};
     }
 `;
 

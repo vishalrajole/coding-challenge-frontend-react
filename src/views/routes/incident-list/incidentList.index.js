@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import moment from 'moment'
+import moment from 'moment';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { fetchIncidents } from './incidentList.action';
 import Incident from '../../components/incident/incident.index';
@@ -18,20 +19,20 @@ class IncidentList extends Component {
         per_page: 10,
         startDate: null,
         endDate: null,
-        searchQuery: '',
-
+        searchQuery: ''
     };
     state = this.initialState;
+
     componentDidMount() {
         this.fetchIncidents();
-    }
+    };
 
     renderIncidentList = () => {
         return this.props.incidentOrder.map(id => {
             const incident = this.props.incidentList[id];
             return <Incident key={incident.id} incident={incident}></Incident>
         });
-    }
+    };
 
     handleInputChange = e => {
         this.setState({ searchQuery: e.target.value, page: 1 });
@@ -55,19 +56,22 @@ class IncidentList extends Component {
         this.setState({ page: this.state.page + 1 }, () => {
             this.fetchIncidents();
         });
-    }
+    };
 
     handleStartDateChange = (startDate) => {
         this.setState({ startDate, page: 1 });
-    }
+    };
+
     handleEndDateChange = (endDate) => {
         this.setState({ endDate, page: 1 });
-    }
+    };
+
     clearFilter = () => {
         this.setState(this.initialState, () => {
             this.fetchIncidents();
         });
-    }
+    };
+
     render() {
         return (
             <>
@@ -108,6 +112,13 @@ class IncidentList extends Component {
 
 function mapStateToPros({ incidentList, loader }) {
     return { incidentList: incidentList.list, incidentOrder: incidentList.order, isLoading: loader.isLoading };
-}
+};
+
+IncidentList.propTypes = {
+    isLoading: PropTypes.bool,
+    incidentOrder: PropTypes.array,
+    incidentList: PropTypes.object,
+    fetchIncidents: PropTypes.func
+};
 
 export default connect(mapStateToPros, { fetchIncidents })(IncidentList);

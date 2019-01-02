@@ -1,1 +1,1 @@
-export const FETCH_INCIDENTS = 'fetch_incidents';
+export const FETCH_INCIDENTS = 'FETCH_INCIDENTS';

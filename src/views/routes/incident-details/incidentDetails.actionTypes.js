@@ -1,3 +1,3 @@
-export const FETCH_LOCATIONS = 'fetch_locations';
-export const UPDATE_DESCRIPTION = 'update_description';
+export const FETCH_LOCATIONS = 'FETCH_LOCATIONS';
+export const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 export const RESET_INCIDENT_DETAILS = 'RESET_INCIDENT_DETAILS';

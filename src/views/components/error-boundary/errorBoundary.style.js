@@ -1,5 +1,6 @@
 import styled from 'styled-components';
+import { ERROR_COLOR } from '../../styles/variables';
 
 export const Error = styled.div`
-    color: #ff0000;
+    color: ${ERROR_COLOR};
 `;

@@ -1,5 +1,6 @@
 import { FETCH_LOCATIONS, UPDATE_DESCRIPTION, RESET_INCIDENT_DETAILS } from './incidentDetails.actionTypes';
 import { filter } from 'lodash';
+
 const initialState = {};
 
 export default function (state = initialState, action) {

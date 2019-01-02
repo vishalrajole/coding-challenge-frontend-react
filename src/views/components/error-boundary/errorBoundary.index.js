@@ -8,7 +8,6 @@ class ErrorBoundary extends React.Component {
     }
 
     componentDidCatch(error, info) {
-        console.log('Error: ', error, info);
         this.setState({ error, info })
     }
 
@@ -16,7 +15,6 @@ class ErrorBoundary extends React.Component {
         if (this.state.info) {
             return <Error>Oops, something went wrong!</Error>;
         }
-
         return this.props.children;
     }
 }
