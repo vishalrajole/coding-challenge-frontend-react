@@ -76,7 +76,7 @@ class IncidentList extends Component {
         return (
             <>
                 <Filter>
-                    <SearchBox value={this.state.searchQuery} placeholder="Search case descriptions" onChange={this.handleInputChange}> </SearchBox>
+                    <SearchBox value={this.state.searchQuery} placeholder="Search case" onChange={this.handleInputChange}> </SearchBox>
                     <DatePicker
                         dateFormat="MMMM d, yyyy"
                         className="custom-date-picker"
