@@ -1,4 +1,4 @@
-# Stolen Bike Index - JOIN Coding Challenge - Frontend (React)
+# Stolen Bike Index - Frontend (React)
 
 ## Local Setup
 - Clone this repo with `git clone https://github.com/vishalrajole/coding-challenge-frontend-react.git`
@@ -66,39 +66,8 @@ For the layout of each page, please refer to the provided wireframes:
 - [Loading state](./screens/index_loading.png)
 - [Details page](./screens/details.png)
 
-Also, you can take inspiration from these resources:
+Refereneces:
 
 - [BikeIndex](https://bikeindex.org/bikes?serial=&button=&location=Berlin&distance=100&stolenness=proximity)
 - [BikeWise](https://bikewise.org)
 
-You can use any boilerplate/approach you prefer (nextjs, create react app, ...), but try to keep it simple. We encourage you to use your favorite tools and packages to build a solid React application.
-
-You can assume that you do not have to support legacy browsers. Feel free to use modern features such as **fetch** or **flexbox**.
-
-Host the website on the service of your choice (zeit, Heroku, AWS, GCloud, ...)
-
-## Tech Requirements
-
-- React
-- Jest + react-testing-library / enzyme
-- Tslint, prettier
-- Typescript is a plus
-- CSSinJS is a plus: styled-components, styled-system, ...
-
-## What we expect
-
-- Build a performant, clean and well-structured solution
-- Tests, quality and coverage.
-- Commit early and often. We want to be able to check your progress
-
-## Instructions
-
-- Fork this repo
-- The challenge is on!
-- Make the app public. Deploy it using the service of your choice
-- Create a pull request
-- Please return your working solution within 7 days of receiving this challenge
-
-## License
-
-We have licensed this project under the MIT license so that you may use this for a portfolio piece (or anything else!).
